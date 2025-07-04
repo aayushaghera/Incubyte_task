@@ -68,4 +68,16 @@ public class SpringCalculatorTest {
         assertEquals(6, result);
     }
 
+    @Test
+    public void shouldSupportCustomDelimiterDefinedInInput() {
+        // Given
+        SpringCalculator calculator = new SpringCalculator();
+
+        // When
+        int result = calculator.add("//;\n1;2");
+
+        // Then
+        assertEquals(3, result);
+    }
+
 }
