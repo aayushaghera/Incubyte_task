@@ -5,18 +5,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SpringCalculator {
 
-    public int add(String numbers) {
-        if (numbers == null || numbers.isEmpty()) {
+    public int add(String input) {
+        if (input == null || input.isEmpty()) {
             return 0;
         }
 
-        String[] parts = numbers.split(",");
-        if (parts.length == 1) {
-            return Integer.parseInt(parts[0].trim());
+        String[] numbers = input.split(",");
+        int sum = 0;
+        for (String number : numbers) {
+            sum += Integer.parseInt(number);
         }
-
-        return -1; // to be updated in next step
+        return sum;
     }
-
 
 }
