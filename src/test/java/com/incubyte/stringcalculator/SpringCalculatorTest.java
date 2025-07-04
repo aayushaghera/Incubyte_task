@@ -19,4 +19,17 @@ public class SpringCalculatorTest {
         // Then
         assertEquals(0,result);
     }
+
+    @Test
+    public void shouldReturnSameNumberWhenInputHasSingleNumber() {
+        // Given
+        SpringCalculator calculator = new SpringCalculator();
+
+        // When
+        int result = calculator.add("4");
+
+        // Then
+        assertEquals(4, result);
+    }
+
 }
