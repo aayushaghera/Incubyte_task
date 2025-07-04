@@ -2,6 +2,8 @@ package com.incubyte.stringcalculator;
 
 import org.springframework.stereotype.Component;
 
+import java.util.regex.Pattern;
+
 @Component
 public class SpringCalculator {
 
@@ -11,7 +13,7 @@ public class SpringCalculator {
             return 0;
         }
 
-        // Normalize delimiters (replace newlines with commas)
+        // Normalize delimiters and split numbers
         String[] numbers = normalizeAndSplitInput(input);
 
         // Parse and sum
@@ -24,9 +26,19 @@ public class SpringCalculator {
     }
 
     private String[] normalizeAndSplitInput(String input) {
-        // Replace newline with comma for unified processing
-        input = input.replace("\n", ",");
-        return input.split(",");
+        String delimiter = ",";
+
+        // Support custom delimiter format: "//<delimiter>\n<rest>"
+        if (input.startsWith("//")) {
+            int delimiterEndIndex = input.indexOf("\n");
+            delimiter = input.substring(2, delimiterEndIndex);
+            input = input.substring(delimiterEndIndex + 1);
+        }
+
+        // Replace newline with comma
+        input = input.replace("\n", delimiter);
+
+        // split by delimiter
+        return input.split(Pattern.quote(delimiter));
     }
 }
-
