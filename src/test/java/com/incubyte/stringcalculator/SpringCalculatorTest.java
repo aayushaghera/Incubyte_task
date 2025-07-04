@@ -55,4 +55,17 @@ public class SpringCalculatorTest {
         // Then
         assertEquals(10, result);
     }
+
+    @Test
+    public void shouldSupportNewLineAsDelimiter() {
+        // Given
+        SpringCalculator calculator = new SpringCalculator();
+
+        // When
+        int result = calculator.add("1\n2,3");
+
+        // Then
+        assertEquals(6, result);
+    }
+
 }
