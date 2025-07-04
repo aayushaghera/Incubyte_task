@@ -44,4 +44,15 @@ public class SpringCalculatorTest {
         assertEquals(6, result);
     }
 
+    @Test
+    public void shouldReturnSumForMultipleCommaSeparatedNumbers() {
+        // Given
+        SpringCalculator calculator = new SpringCalculator();
+
+        // When
+        int result = calculator.add("1,2,3,4");
+
+        // Then
+        assertEquals(10, result);
+    }
 }
