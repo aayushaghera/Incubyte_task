@@ -9,11 +9,14 @@ public class SpringCalculator {
         if (numbers == null || numbers.isEmpty()) {
             return 0;
         }
-        if (!numbers.contains(",")) {
-            return Integer.parseInt(numbers);
+
+        String[] parts = numbers.split(",");
+        if (parts.length == 1) {
+            return Integer.parseInt(parts[0].trim());
         }
 
-        return -1; // placeholder for upcoming logic
+        return -1; // to be updated in next step
     }
+
 
 }
